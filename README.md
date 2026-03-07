@@ -26,7 +26,7 @@ as well but it doeesn't allows the fine gain control over my preferences.
 
   - clone the repo using the following command:
  ```python
-      git clone https://p12duke/
+      git clone https://github.com/p12duke/useful-scripts.git
 ```
 
 ### Usage: 
