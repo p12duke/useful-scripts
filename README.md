@@ -1,4 +1,4 @@
-# Simultaneous Comamnd execution and recorder 
+# simultaneous Command execution and recorder 
 
 
 ### Introduction 
