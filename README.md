@@ -43,7 +43,7 @@ Record Mode: [ -r] [ filename]
   - In record mode, RECORD_PROC_STATUS would be set to true which allows to invoke the script in intermediate steps. Recording a bullet point for
   - each steps along with suitable header.
 
-NOTE: if a file name already exists, script would be recorded in same file. Or, you can create a new one as per your requirement. 
+NOTE: If a file name already exists, script would be recorded in same file. Or, you can create a new one as per your requirement. 
 
 Available Markdown options: 
   - t :  title 
