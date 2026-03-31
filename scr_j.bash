@@ -1,4 +1,4 @@
-source ~/bash_bin/bash_gen/script_journal.sh
+source ~/mycodespace/useful-scripts/script_journal.sh
 
 _scj_completions()
 {
