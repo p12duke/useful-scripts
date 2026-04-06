@@ -1,4 +1,5 @@
-#!/usr/bin env bash #﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+#!/usr/bin env bash 
+#﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 #Name:Purushottam Tandon
 #Date: Thu Jan  8 11:34:44 PM IST 2026
 #Descr: Generate a markdown script using the script command
@@ -7,7 +8,7 @@
 #﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 # Logfile where inputs will be logged (only inputs, no outputs)
 # exit command exit from mainsystem and no more command shall move you back 1 step in the process
-# NOTE FOR NEW LOGFILE GENERATE WITH MD extension
+# NOTE FOR NEW LOGFILE GENERATE WITH MD extension 
 LOGDIR="$HOME/script_logs/"
 LOGFILE="$LOGDIR$2" 
 RECORD_PROC_MODE=0 # 0-turned off
@@ -56,13 +57,14 @@ gen_bullet_point(){
 		# while user prompts take input into bullets
 		# check if bullet =="nomore" ; exit but do not record nomore in the logfile
 		local i=1
-		while read -p "[b]:" -e bullet;do
-				if [[ $bullet == "nomore" || $bullet=="nm" ]]; then
-					break
+		while [[ $RECORD_PROC_MODE == 1 ]]; do 
+				 				read -ep "[b ($i)] ->" bullet
+				if [[ $bullet == "nomore" || $bullet == "nm" ]];then 
+				 break;
 				fi
-				((i++))
-				echo "$i. $bullet">>$LOGFILE
-		done
+				echo "$i. $bullet" >>$LOGFILE
+		((i++))
+done
 }
 div(){
 		echo "---" >> $LOGFILE
@@ -76,8 +78,8 @@ main(){
 		#REPL
 gen_logfile 
 while true; do
-		echo -n "$(tput setaf 1) [nutshell 🔩] :"
-		read  -e  command
+		# echo -n "$(tput setaf 1) :"
+		read  -ep "$(tput setaf 3) [nutshell 🔩] "  command
     if [[ "$command" == "exit" ]]; then
         break
     fi
