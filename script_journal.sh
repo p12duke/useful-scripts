@@ -63,6 +63,12 @@ gen_bullet_point(){
 				 break;
 				fi
 				echo "$i. $bullet" >>$LOGFILE
+				read  -ep "$(tput setaf 2) [nutshell 🔩] "  command
+		    if [[ "$command" == "exit" ]]; then
+			   break
+				fi
+				log_input "$command"
+				bash -c "$command"
 		((i++))
 done
 }
@@ -95,13 +101,23 @@ while true; do
 done
 echo "Session ended.Commands logged to $LOGFILE"
 }
+main_record_mode(){
+		# gen_logfile 
+		gen_logfile 
+		gen_title 
+		div 
+		gen_info 
+		# read command  
+				gen_bullet_point 
+
+}
 while getopts ":rnhvc:" opts;do
 		case "$opts" in
 				r)
 						echo "RECORD_PROC_MODE is enabled. check -h for more info"
 						# usage_more 
 						RECORD_PROC_MODE=1
-						main
+						main_record_mode 
 						;;
 				n) echo "normal mode enabled."
 						# usage_more 
