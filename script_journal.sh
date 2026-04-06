@@ -57,18 +57,20 @@ gen_bullet_point(){
 		# while user prompts take input into bullets
 		# check if bullet =="nomore" ; exit but do not record nomore in the logfile
 		local i=1
-		while [[ $RECORD_PROC_MODE == 1 ]]; do 
-				 				read -ep "[b ($i)] ->" bullet
+		while true; do 
+				read -ep "[b ($i)] ->" bullet
 				if [[ $bullet == "nomore" || $bullet == "nm" ]];then 
 				 break;
 				fi
 				echo "$i. $bullet" >>$LOGFILE
-				read  -ep "$(tput setaf 2) [nutshell 🔩] "  command
-		    if [[ "$command" == "exit" ]]; then
-			   break
+				if [[ $RECORD_PROC_MODE == 1 ]];then
+						read  -ep "$(tput setaf 5) [nutshell 🔩] "  command
+						if [[ "$command" == "exit" ]]; then
+						 break
+						fi
+						log_input "$command"
+						bash -c "$command"
 				fi
-				log_input "$command"
-				bash -c "$command"
 		((i++))
 done
 }
