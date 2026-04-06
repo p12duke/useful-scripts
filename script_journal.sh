@@ -45,7 +45,7 @@ usage_more(){
 }
 gen_title(){
 		read -p  "Enter Title or Subject:#" -e title
-		echo "#### $title">> $LOGFILE
+		echo "### $title">> $LOGFILE
 }
 gen_info(){
 		read -p "Tell more about this: " -e whatinfo
