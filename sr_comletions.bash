@@ -1,14 +1,13 @@
-source ~/mycodespace/useful-scripts/script_journal.sh
-
-_scj_completions()
+#!/usr/bin/env bash
+_echoarg_completions()
 {
     local cur="${COMP_WORDS[COMP_CWORD]}"
 
     # Example suggestions (you can customize this list)
-		local options="$(ls ~/script_logs/)"
+		local options="$(ls $HOME/script_logs/)"
 				COMPREPLY+=( $(compgen -W "${options}" -- "$cur") )
 }
 
-complete -F _scj_completions sr -n  sr -v
+complete -F _echoarg_completions script_journal.sh  -v
 
 
