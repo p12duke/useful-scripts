@@ -9,7 +9,7 @@
 # Logfile where inputs will be logged (only inputs, no outputs)
 # exit command exit from mainsystem and no more command shall move you back 1 step in the process
 # NOTE FOR NEW LOGFILE GENERATE WITH MD extension 
-source $HOME/useful-scripts/sr_completions.bash.bash || echo " Not sourced "; exit 1 
+# source $HOME/useful-scripts/sr_completions.bash || echo " Not sourced "; exit 1 
 LOGDIR="$HOME/script_logs/"
 LOGFILE="$LOGDIR$2" 
 RECORD_PROC_MODE=0 # 0-turned off
@@ -79,7 +79,9 @@ div(){
 		echo "---" >> $LOGFILE
 }
 log_input() {
-    echo  "> \`\`\`  $1  \`\`\`" >> "$LOGFILE"
+    echo  "> \`\`\`bash
+		$1 
+		\`\`\`" >> "$LOGFILE"
 }
 
 # Main loop to read and execute commands
@@ -141,3 +143,5 @@ while getopts ":rnhvc:" opts;do
 						;;
 		esac
 done
+
+ source $HOME/useful-scripts/sr_completions.bash || echo " Not sourced "; exit 1 
